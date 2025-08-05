@@ -1,7 +1,7 @@
 <template>
-  <section>
+  <section class="section-certifications">
       <div>
-          <h1>Mis <span class="span-certifications"> certificaciones</span> </h1>
+          <h1 class="title-certifications">Mis <span class="span-certifications"> certificaciones</span> </h1>
       </div>
       <div class="div-certifications">
         <ul class="timeline">
@@ -11,12 +11,12 @@
               <p class="timeline-event-thumbnail">{{certification.date}}</p>
               
               <div :class="certification.important ? 'div-important' : ''">
-                <h3 :class="certification.important ? 'h3-important' : ''">{{ certification.name }}</h3>
+                <h3 class="name-certification" :class="certification.important ? 'h3-important' : ''">{{ certification.name }}</h3>
                 <img src="../assets/images/ganar.png" alt="image.png" class="img-ganar" v-if="certification.important">
               </div>
               
               <h4>{{ certification.institution }}</h4>
-              <a :href="certification.link" target="_blank">Ver certificado</a>
+              <a  class="view-certification" :href="certification.link" target="_blank">Ver certificado</a>
               </div>
           </li>
         </ul>
@@ -116,7 +116,7 @@ export default {
 
 <style scoped>
 
-section{
+.section-certifications{
   background-color: rgb(190, 147, 183);
   display: flex;
   flex-direction: column;
@@ -127,7 +127,7 @@ section{
   padding: 90px;
 }
 
-h1{
+.title-certifications{
   color: white;
   font-size: 3rem;
   font-weight: 600;
@@ -148,7 +148,7 @@ p{
   font-weight: bold;
 }
 
-li{
+.timeline-event{
   max-width: 90vw;
 }
 
@@ -194,7 +194,7 @@ li{
   width: 80%;
 }
 
-.timeline-event-copy h3 {
+.timeline-event-copy .name-certification {
   font-size: 1.5em;
 }
 
@@ -236,7 +236,7 @@ li{
   padding: 0.25em 1em 0.2em 1em;
 }
 
-a{
+.view-certification{
   color: white;
   font-size: 1rem;
 }
@@ -255,21 +255,21 @@ a{
 }
 
 @media (max-width: 768px) {
-  section {
+  .section-certifications {
     padding: 40px 20px;
   }
 }
 
 @media (max-width: 425px) {
-  h1 {
+  .title-certifications {
       font-size: 2rem;
   }
 
-  .timeline-event-copy h3 {
+  .timeline-event-copy .name-certification {
   font-size: 1em;
 }
 
-  section{
+  .section-certifications{
     padding: 40px 10px;
   }
 
@@ -279,7 +279,7 @@ a{
   margin-bottom: 10px;
   }
   
-  a{
+  .view-certification{
     color: white;
     font-size: 0.8rem;
   }
@@ -296,7 +296,7 @@ a{
   height: 30px;
   margin-bottom: 10px;
   }
-  a{
+  .view-certification{
     font-size: 0.6rem;
   }
 }

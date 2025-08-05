@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg" id="inicio">
   <div class="container-fluid">
-    <a class="name" href="#">Shelsy <span class="name">GARCIA</span></a>
+    <a class="name" href="#">Shelsy <span class="last-name">GARCIA</span></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,9 +22,6 @@
 <style scoped>
 
 nav {
-  /* display: flex;
-  gap: 20px;
-  justify-content: space-around; */
   background-color: rgb(190, 147, 183);
   padding: 1rem;
   font-family: "Quicksand", sans-serif;
@@ -33,14 +30,17 @@ nav {
   font-weight: bold;
   
 }
-a {
+.name{
+  font-size: 1.2rem;
   color: white;
   text-decoration: none;
   margin-right: 30px;
 }
 
-.name{
-  font-size: 1.2rem;
+.a-menu{
+  color: white;
+  text-decoration: none;
+  margin-right: 30px;
 }
 
 .a-menu:hover{
@@ -48,7 +48,7 @@ a {
   color:white;
 }
 
-span{
+.last-name{
   color: #93BEA9 ;
 }
 

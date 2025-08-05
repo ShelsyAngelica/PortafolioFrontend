@@ -1,30 +1,29 @@
 <template>
-    <section id="proyectos">
+    <section class="section-projects" id="proyectos">
         <div>
-            <h1>Mis <span class="span-about"> proyectos</span> </h1>
+            <h1 class="title-projects">Mis <span class="span-projects"> proyectos</span> </h1>
         </div>
         <div class="projects">
             <div class="card-project">
                 <img src="../assets/images/php.png" alt="" class="img-project">
-                <h5>Texto a Morse</h5>
+                <h5 class="title-project">Texto a Morse</h5>
                 <router-link :to="{ name: 'TextToMorse' }"> Visitar </router-link>
-                <p>Descripción del proyecto: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                <p class="description-project">Descripción del proyecto: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
                 <!-- <p>Tecnologías</p> -->
             </div>
 
             <div class="card-project">
                 <img src="../assets/images/php.png" alt="" class="img-project">
-                <h5>Proyecto 1</h5>
-                <p>Linkkk</p>
-                <p>Descripción</p>
-                <p>Tecnologías</p>
+                <h5 class="title-project">Visita de Carros</h5>
+                <router-link :to="{ name: 'VisitCar' }"> Visitar </router-link>
+                <p class="description-project">Descripción del proyecto: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
             </div>
 
             <div class="card-project">
                 <img src="../assets/images/php.png" alt="" class="img-project">
-                <h5>Proyecto 1</h5>
+                <h5 class="title-project">Proyecto 1</h5>
                 <p>Linkkk</p>
-                <p>Descripción</p>
+                <p class="description-project">Descripción</p>
                 <p>Tecnologías</p>
             </div>   
         </div>
@@ -33,7 +32,7 @@
 
 <style scoped>
 
-section{
+.section-projects{
     background-color: rgb(190, 147, 183);
     display: flex;
     flex-direction: column;
@@ -44,22 +43,22 @@ section{
     padding: 90px;
 }
 
-h1{
+.title-projects{
     color: white;
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 40px;
 }
 
-h5{
+.title-project{
     font-weight: 700;
     color: white;
 }
-.span-about, span{
+.span-projects{
     color: #93BEA9;
 }
 
-p{
+.description-project{
     color: white;
     font-size: 1rem;
 }
@@ -89,10 +88,10 @@ p{
 }
 
 @media (max-width: 425px) {
-  h1 {
+  .title-projects {
       font-size: 2rem;
   }
-  section{
+  .section-projects{
     padding: 40px 50px;
   }
 }

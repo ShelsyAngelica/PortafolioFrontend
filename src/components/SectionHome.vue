@@ -1,21 +1,21 @@
 <template>
-    <section>
+    <section class="section-home">
         <div>
-            <h1>Hola, soy Shelsy <span> GARCIA</span> </h1>
+            <h1 class="title-home">Hola, soy Shelsy <span class="span-home"> GARCIA</span> </h1>
             
         </div>
         <div>
-            <p>Desarrolladora Jr Backend</p>
+            <p class="text-home">Desarrolladora Jr Backend</p>
         </div>
         <div>
-            <button id="btn-cv">Descargar CV</button>
-            <button id="btn-contact">Contactame</button>
+            <button class="btn-cv" id="btn-cv">Descargar CV</button>
+            <button class="btn-contact" id="btn-contact">Contactame</button>
         </div>
     </section>
 </template>
 
 <style scoped>
-section{
+.section-home{
     background-color: rgb(190, 147, 183);
     display: flex;
     flex-direction: column;
@@ -25,25 +25,25 @@ section{
     font-family: "Quicksand", sans-serif;
 }
 
-h1{
+.title-home{
     font-size: 4rem;
     font-weight: 600;
     color: white;
 }
-span{
+.span-home{
     color: #93BEA9;
 }
-p{
+.text-home{
     color: white;
     font-size: 1.5rem;
     font-weight: 600;
 }
 
-button{
+.btn-cv, .btn-contact{
     font-size: 1rem;
 }
 
-#btn-cv{
+.btn-cv{
     background-color: #93BEA9;
     color: white;
     border: none;
@@ -51,24 +51,24 @@ button{
     border-radius: 20px;
     margin-right: 10px;
 }
-#btn-cv:hover{
+.btn-cv:hover{
     color: black;
 }
-#btn-contact{
+.btn-contact{
     border: 2px solid   #93BEA9;
     color:  #93BEA9;
     padding: 10px 20px;
     border-radius: 20px;
 }
-#btn-contact:hover{
+.btn-contact:hover{
     color: black;
 }
 
 @media (max-width: 768px) {
-    section{
+    .section-home{
         padding: 0 10px 0 15px;
     }
-    h1{
+    .title-home{
         font-size: 2rem;
     }
 }

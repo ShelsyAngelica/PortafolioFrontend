@@ -1,22 +1,22 @@
 <template>
-    <section id="contacto">
+    <section class="section-contact-me" id="contacto">
         <div>
-            <h1>Contacta<span class="span-about">me</span> </h1>
+            <h1 class="title-contact-me">Contacta<span class="span-contact-me">me</span> </h1>
         </div>
         <div class="projects">
             <div class="card-project">
                 <img src="../assets/images/location.png" alt="" class="img-project">
-                <p>Bogota - Colombia</p>
+                <p class="text-contact-me">Bogota - Colombia</p>
             </div>
 
             <div class="card-project">
                 <img src="../assets/images/correo.png" alt="" class="img-project-mail">  
-                <p>Shelsy.a.garcia@gmail.com</p>
+                <p class="text-contact-me">Shelsy.a.garcia@gmail.com</p>
             </div>
 
             <div class="card-project">
                 <img src="../assets/images/telefono.png" alt="" class="img-project">
-                <p>+(57) 300 9564545</p>
+                <p class="text-contact-me">+(57) 300 9564545</p>
             </div>   
         </div>
     </section>
@@ -24,7 +24,7 @@
 
 <style scoped>
 
-section{
+.section-contact-me{
     background-color: #4a1942;
     display: flex;
     flex-direction: column;
@@ -36,22 +36,18 @@ section{
     justify-content: space-between;
 }
 
-h1{
+.title-contact-me{
     color: white;
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 40px;
 }
 
-h5{
-    font-weight: 700;
-    color: white;
-}
-.span-about, span{
+.span-contact-me{
     color: #93BEA9;
 }
 
-p{
+.text-contact-me{
     color: white;
     font-size: 1rem;
 }
@@ -89,7 +85,7 @@ p{
 }
 
 @media (max-width: 425px) {
-  h1 {
+  .title-contact-me {
       font-size: 2rem;
   }
 

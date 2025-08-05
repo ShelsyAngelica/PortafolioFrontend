@@ -1,11 +1,11 @@
 <template>
-    <section id="skills">
+    <section class="section-skills" id="skills">
         <div class="div-title">
-            <h1>Mis <span class="span-about"> skills</span> </h1>
+            <h1 class="title-skills">Mis <span class="span-skills"> skills</span> </h1>
         </div>
         <div class="div-skills">
            <div class="div-skills-text">
-                <i v-for="skill in skills" :key="skill.name" :class="skill.icon" :title="skill.name"></i>
+                <i v-for="skill in skills" :key="skill.name" :class="skill.icon" :title="skill.name" class="i-skills"></i>
            </div>
         </div>
     </section>
@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
 
-section{
+.section-skills{
     background-color: #4a1942;
      min-height: 100vh;
     font-family: "Quicksand", sans-serif;
@@ -54,29 +54,20 @@ section{
     align-items: center;
 }
 
-h1 {
+.title-skills {
     color: white;
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 40px;
 }
 
-img{
-    width: 200px;
-}
-i{
+.i-skills{
     color: white;
     font-size: 100px;
     padding: 10px;
 }
-.span-about,
-span {
+.span-skills {
     color: #93BEA9;
-}
-
-p {
-    color: white;
-    font-size: 1rem;
 }
 
 .div-skills-text {
@@ -100,7 +91,7 @@ p {
     font-size: 30px;
   }
 
-  h1{
+  .title-skills{
     font-size: 2rem;
   }
 }
@@ -116,13 +107,7 @@ p {
         width: 100%;
     }
 
-    p {
-        font-size: 0.95rem;
-        text-align: center;
-    }
-
-    
-    section {
+    .section-skills {
         padding: 40px 20px;
     }
 }

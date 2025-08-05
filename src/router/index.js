@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import index_home from '../views/IndexHome.vue'
 import text_to_morse from '../views/TextToMorse.vue'
+import visit_car from '../views/VisitCar.vue'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/texto-a-morse',
     name: 'TextToMorse',
     component: text_to_morse
+  },
+  {
+    path: '/visita-de-carros',
+    name: 'VisitCar',
+    component: visit_car
   }
   
   // Puedes agregar más rutas aquí

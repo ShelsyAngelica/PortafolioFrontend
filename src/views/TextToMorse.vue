@@ -1,18 +1,35 @@
 <template>
-    <div>
-        <h1>Texto Morse</h1>
-        <label for="string">Ingrese el texto</label>
-        <input type="text" id="string">
-        <button @click="getString()">Enviar</button>
+    <section class="container-text-to-morse">
+        <div class="div-text-to-morse">
+        <h1 class="title-text-to-morse">Texto a <span class="span-text-to-morse">Morse</span></h1>
+        <label class="label-text-to-morse" for="string">Ingrese el texto</label>
+        <input type="text" id="string" class="input-text-to-morse">
+        <button @click="getString()" class="button-convertir">Convertir</button>
 
-        <p>Tu texto en morse es: 
-            <span v-for="(element) in data" :key="element.index" :class="{'letter-color': element.letter_color}">{{ element.letter }}</span>
+        <p class="p-morse">Tu texto en morse es: 
+            <span  class="text-morse" v-for="(element) in data" :key="element.index" :class="{'letter-color': element.letter_color}">{{ element.letter }}</span>
         </p>
 
         <div style="white-space: pre;" id="container"></div>
 
-        <button @click="playMorse()">Reproducir en morse</button>
+
+        <button @click="playMorse()" class="button-play-morse" title="Reproducir en morse">
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24">
+            <path 
+                fill="none" 
+                stroke="#fff" 
+                stroke-linejoin="round" 
+                stroke-width="2.4" 
+                d="m5 3l16 9l-16 9z"/>
+            </svg>
+        </button>
+
     </div>
+    </section>
 </template>
 
 <script>
@@ -116,13 +133,79 @@ export default {
 
 <style scoped>
 
-.letter-color{
-    font-size: 80px;
-    color: red;
+.container-text-to-morse{
+    background-color: rgb(190, 147, 183);
+    min-height: 88.6vh;
+    font-family: "Quicksand", sans-serif;
+    padding: 90px;
 }
 
-span{
+.title-text-to-morse .span-text-to-morse{
+    font-size: 38px;
+}
+
+.div-text-to-morse{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.letter-color{
+    font-size: 80px;
+    color: #4a1942;
+}
+
+.title-text-to-morse, .label-text-to-morse, .p-morse{
+    color: white;
+}
+
+.label-text-to-morse, .input-text-to-morse{
+    margin: 10px 0px;
+}
+
+.input-text-to-morse{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+
+.label-text-to-morse{
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.button-play-morse{
+    border-radius: 50%;
+    border: 2px solid #93BEA9;
+    background-color: #93BEA9;
+    color:  #93BEA9;
+    padding: 10px 10px 10px 11px;
+}
+
+.button-play-morse, .button-convertir{
+    margin: 10px 0px;
+}
+
+.button-convertir{
+    border: 2px solid #93BEA9;
+    color:  #93BEA9;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.button-play-morse:hover, .button-convertir:hover{
+    color: black;
+}
+
+.text-morse{
     font-size: 50px;
+}
+
+.span-text-to-morse{
+    color: #93BEA9;
 }
 
 
