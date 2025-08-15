@@ -44,20 +44,23 @@
                         <button class="btn-edit-car" @click="setCarToEdit(car)" data-bs-toggle="modal" data-bs-target="#modalCar">
                             Editar
                         </button>
+                        <button class="btn-edit-car" @click="car.visits.length > 0  ? carDeparture(car) : carEntry(car)" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                            
+                            {{car.visits.length > 0  ? 'Salida' : 'Ingreso'}}
+                        </button>
 
-                        <button class="btn-delete-car"  @click="confirmDelete(car.id)" data-bs-toggle="modal" data-bs-target="#confirmModal"> 
+                        <button class="btn-delete-car"  @click="confirmDelete(car)" data-bs-toggle="modal" data-bs-target="#confirmModal"> 
                             Eliminar
                         </button>
                     </td>
                 </tr>
             </tbody>
-        </table>     
-           
+        </table>        
         </div>
     </div>
     
 
-<!-- Modal de registro de visita -->
+<!-- Modal de nuevo vehiculo -->
 <div class="modal fade font-family-modal" id="modalCar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -69,46 +72,20 @@
         <form>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Placa:</label>
-            <input type="text" class="form-control" id="recipient-name" v-model="car.car_plate">
+            <input 
+                type="text" 
+                class="form-control" 
+                id="recipient-name" 
+                v-model="car.car_plate" 
+                placeholder="ABC123" 
+                required 
+                pattern="[A-Z]{3}[0-9]{3}" 
+                title="La placa debe tener 3 letras y 3 números, por ejemplo ABC123">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Tipo de vehiculo:</label>
             <!-- <input type="text" class="form-control" id="recipient-name"> -->
-            <select class="form-select" aria-label="Disabled select example" v-model="car.type_vehicle_id" >
-                <option selected>Seleccione un tipo de vehiculo</option>
-                <option v-for="vehicleType in vehicleTypes" :key="vehicleType.id" :value="vehicleType.id">
-                    {{ vehicleType.name }}
-                </option>
-            </select>
-          
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-close-car" data-bs-dismiss="modal">Cerrar</button>
-        <button @click="submitCar()" type="button" class=" btn-save-car" data-bs-dismiss="modal">{{isEditing ? 'Actualizar' : 'Crear' }}</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade font-family-modal" id="modalCar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese los datos de la visita</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Hora:</label>
-            <input type="text" class="form-control" id="recipient-name" v-model="car.car_plate">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Tipo de vehiculo:</label>
-            <!-- <input type="text" class="form-control" id="recipient-name"> -->
-            <select class="form-select" aria-label="Disabled select example" v-model="car.type_vehicle_id" >
+            <select class="form-select" aria-label="Disabled select example" v-model="car.type_vehicle_id" required>
                 <option selected>Seleccione un tipo de vehiculo</option>
                 <option v-for="vehicleType in vehicleTypes" :key="vehicleType.id" :value="vehicleType.id">
                     {{ vehicleType.name }}
@@ -133,15 +110,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="confirmModalLabel">Confirmar eliminación</h5>
+        <h5 class="modal-title" id="confirmModalLabel">{{modal.title}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
-        ¿Estás seguro de que deseas eliminar este elemento?
+        {{ modal.body }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-close-car" data-bs-dismiss="modal">Cancelar</button>
-        <button @click="deleteCar()" type="button" class="btn-delete-car2" id="btnConfirmDelete" data-bs-dismiss="modal">Eliminar</button>
+        <button @click="modal.func" type="button" class="btn-delete-car2" id="btnConfirmDelete" data-bs-dismiss="modal">
+            {{ modal.button }}
+        </button>
       </div>
     </div>
   </div>
@@ -153,6 +132,7 @@
 
 <script>
 import axios from 'axios';
+/* global Swal */
 
 export default {
     data(){
@@ -166,13 +146,49 @@ export default {
             idAEliminar : null,
             isEditing: false,
             text: 'Se desea administrar el acceso de vehículos a un estacionamiento de pago. El estacionamiento no se encuentra automatizado, por lo que existe un empleado encargado de registrar las entradas y salidas de vehículos. Los vehículos se identifican por su número de placa. Cuando un vehículo entra en el estacionamiento el empleado registra su entrada y al salir registra su salida y, en algunos casos, cobra el importe correspondiente por el tiempo de estacionamiento. El importe cobrado depende del tipo de vehículo: Los vehículos oficiales no pagan, pero se registran sus estancias para llevar el control. (Una estancia consiste en una hora de entrada y una de salida) Los residentes pagan a final de mes a razón de MXN$0.05 el minuto. La aplicación irá acumulando el tiempo (en minutos) que han permanecido estacionados. Los no residentes pagan a la salida del estacionamiento a razón de MXN$0.5 por minuto. Se prevé que en el futuro puedan incluirse nuevos tipos de vehículos, por lo que la aplicación desarrollada deberá ser fácilmente extensible en ese aspecto. ',
-            showAll: false
+            showAll: false,
+            idCarDeparture: null,
+            modalAction: null,
 
         }
     },
     computed: {
         shortText(){
             return this.text.slice(0, 100);
+        },
+        modal(){
+
+            switch (this.modalAction) {
+                case 'entry':
+                    return {
+                                title : 'Ingreso de vehiculo',
+                                body: '¿Seguro desea registrar el ingreso de este vehiculo?',
+                                func: () => this.carEntryConfirm(),
+                                button: 'Ingreso'
+                            }
+                case 'departure':
+                    return {
+                                title : 'Salida de vehiculo',
+                                body: '¿Seguro desea registrar la salida de este vehiculo?',
+                                func: () => this.carDepartureConfirm(),
+                                button: 'Salida'
+                            }
+                case 'delete':
+                        return {
+                                title : 'Eliminación de vehiculo',
+                                body: '¿Seguro desea eliminar este vehiculo?',
+                                func: () => this.deleteCar(),
+                                button: 'Eliminar'
+                            }
+                            
+            }
+
+
+            return {
+                title : null,
+                body: null,
+                func: () => {}
+            }
         }
     },
     mounted(){
@@ -198,6 +214,25 @@ export default {
             }
         },
         createCar(){
+            if (!this.car.car_plate || !this.car.type_vehicle_id) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Campos vacíos',
+                    text: 'Por favor, llena todos los campos'
+                });
+                return;
+            }
+
+            const regex = /^[A-Z]{3}[0-9]{3}$/;
+            if (!regex.test(this.car.car_plate)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'La placa debe tener 3 letras y 3 números (ABC123)'
+                });
+                return;
+            }
+            
             axios.post('http://localhost:8000/api/car',this.car)
             .then(() => {
                 this.isEditing = false;
@@ -209,10 +244,25 @@ export default {
                     car_plate: null,
                     type_vehicle_id: null,
                 };
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Vehiculo creado correctamente',
+                    text: 'El vehiculo ha sido creado correctamente'
+                });
                                
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.response);
+                if(error.response.status === 422){
+                    Swal.fire({
+                    title: 'Error!',
+                    text: 'Ya existe un vehiculo con la misma placa',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                    })
+                }
+
+               
             });
         },
         getVehiclesTypes(){
@@ -226,14 +276,19 @@ export default {
                 console.log(error);
             });
         },
-        confirmDelete(id){
-            this.idAEliminar = id;
+        confirmDelete(car){
+            this.idAEliminar = car.id;
+            this.idCarEntry = null;
+            this.modalAction = 'delete';
+            //actualiza los datos del car
+            this.car = car;
         },
         deleteCar(){
             axios.delete('http://localhost:8000/api/car/' + this.idAEliminar)
             .then(() => {
                 // Actualizar la lista de carros
                 this.getCars();
+                
             })
             .catch(error => {
                 console.log(error);
@@ -268,10 +323,41 @@ export default {
                 console.log(error);
             });
         },
-        registerEntry(){
-            axios.post('http://localhost:8000/api/visit')
+        // metodo para registrar el ingreso de un vehiculo|
+        carEntry(car){
+            this.idCarEntry = car.id;
+            this.modalAction = 'entry';
+            this.car = car;
+        },
+        // metodo para confirmar el ingreso de un vehiculo
+        carEntryConfirm(){
+            axios.post('http://localhost:8000/api/visit', {vehicle_id: this.idCarEntry})
+            .then(() => {
+                
+                this.idCarEntry = null;
+                this.getCars();
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        },
+        carDeparture(car){
+            this.idCarDeparture = car.id;
+            this.modalAction = 'departure';
+            this.car = car;
+        },
+        carDepartureConfirm(){
+            let visit = this.car.visits.find(v => v.departure_date == null)
+            axios.put('http://localhost:8000/api/visit/' + visit.id)
+            .then(() => {
+                
+                this.idCarDeparture = null;
+                this.getCars();
+            })
+            .catch(error => {
+                console.log(error);
+            });
         }
-        
 
     }
 }
@@ -336,6 +422,7 @@ export default {
     height:  20px;
     font-size: 12px;
     margin-right: 10px;
+    width: 50px;
 }
 .btn-delete-car{
     border: none;
