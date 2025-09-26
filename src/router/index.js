@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import index_home from '../views/IndexHome.vue'
 import text_to_morse from '../views/TextToMorse.vue'
 import visit_car from '../views/VisitCar.vue'
+import fizz_buzz from '../views/FizzBuzz.vue'
+import anagram from '../views/AnagraM.vue'
 
 const routes = [
   {
@@ -18,6 +20,16 @@ const routes = [
     path: '/visita-de-carros',
     name: 'VisitCar',
     component: visit_car
+  },
+  {
+    path: '/fizz-buzz',
+    name: 'FizzBuzz',
+    component: fizz_buzz
+  },
+  {
+    path: '/anagrama',
+    name: 'Anagram',
+    component: anagram
   }
   
   // Puedes agregar más rutas aquí

@@ -21,11 +21,19 @@
 
             <div class="card-project">
                 <img src="../assets/images/php.png" alt="" class="img-project">
-                <h5 class="title-project">Proyecto 1</h5>
-                <p>Linkkk</p>
+                <h5 class="title-project">Fizz Buzz</h5>
+                <router-link :to="{ name: 'FizzBuzz' }"> Visitar </router-link>
                 <p class="description-project">Descripción</p>
                 <p>Tecnologías</p>
-            </div>   
+            </div>
+            
+            <div class="card-project">
+                <img src="../assets/images/php.png" alt="" class="img-project">
+                <h5 class="title-project">Anagrama</h5>
+                <router-link :to="{ name: 'Anagram' }"> Visitar </router-link>
+                <p class="description-project">Descripción</p>
+                <p>Tecnologías</p>
+            </div> 
         </div>
     </section>
 </template>
