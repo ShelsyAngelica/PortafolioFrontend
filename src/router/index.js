@@ -4,6 +4,8 @@ import text_to_morse from '../views/TextToMorse.vue'
 import visit_car from '../views/VisitCar.vue'
 import fizz_buzz from '../views/FizzBuzz.vue'
 import anagram from '../views/AnagraM.vue'
+import prime_numbers from '../views/PrimeNumbers.vue'
+import area_of_polygon from '../views/AreaOfPolygon.vue'
 
 const routes = [
   {
@@ -30,14 +32,17 @@ const routes = [
     path: '/anagrama',
     name: 'Anagram',
     component: anagram
-  }
-  
-  // Puedes agregar más rutas aquí
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import('@/views/About.vue')
-  // }
+  },
+  {
+    path: '/numeros-primos',
+    name: 'PrimeNumbers',
+    component: prime_numbers
+  },
+  {
+    path: '/area-de-un-poligono',
+    name: 'AreaOfPolygon',
+    component: area_of_polygon
+  },
 ]
 
 const router = createRouter({

@@ -1,16 +1,20 @@
 <template>
     <section class="container-ag">
+        <h1 class="title-text-ag">Anagra<span class="span-text-ag">ma</span></h1>
+
         <form action="">
             <div class="div-ag">
-                <h1 class="title-text-fb">Anagra<span class="span-text-ag">ma</span></h1>
 
                 <label class="label-text-ag" for="string1" id="string1">Ingrese la 1 palabra</label>
                 <input type="text" v-model="string1" class="input-text-ag">
 
                 <label class="label-text-ag" for="string2" id="string2">Ingrese la 2 palabra</label>
                 <input type="text" v-model="string2" class="input-text-ag">
-
-                <button type="button" @click="anagram()" class="btn-v">Validar</button>
+                
+                <div class="div-b-ag">
+                    <button type="button" @click="anagram()" class="btn-v">Validar</button>
+                    <button @click="clean()" class="btn-clean-ag">Limpiar</button>
+                </div>
 
                 <p v-if="data !== null" class="p-ag">
                     <span v-if="data">Si es anagrama</span>
@@ -26,6 +30,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
     name: 'TextToMorse',
@@ -37,23 +42,26 @@ export default {
         }
     },
     methods: {
-        async anagram(){
-            try {
-                const rta = await fetch(
-                    `http://localhost:8000/api/anagram?string1=${encodeURIComponent(this.string1)}&string2=${encodeURIComponent(this.string2)}`
-                )
-
-                if (!rta.ok){
-                    throw new Error('Error al obtener los datos:' + rta.status)
+        anagram(){
+            axios.get("http://localhost:8000/api/anagram", {
+                params: { 
+                    string1: this.string1,
+                    string2: this.string2
                 }
-
-                 this.data = await rta.json();
-                
-            } catch(error){
-                console.error('Error:', error)
-            }
-            
+            })
+            .then(response => {
+                this.data = response.data;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        },
+        clean(){
+            this.string1 = '',
+            this.string2 =  '',
+            this.data   = null
         }
+
         
     }
 }
@@ -68,22 +76,33 @@ export default {
     padding: 90px 15px 10px 15px;
 }
 
-.title-text-fb .span-text-ag{
+.title-text-ag, .span-text-ag{
     font-size: 38px;
+}
+
+.title-text-ag{
+    text-align: center;
+    color: white;
 }
 
 .div-ag{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 12px 16px;
+    max-width: 500px;
+    margin: 20px auto;
+    background: #f5e6f7;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.title-text-fb, .label-text-ag, .p-fb{
-    color: white;
-}
-
-.label-text-ag{
-    margin: 10px 0px;
+.input-text-ag{
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    height: 36px;
+    width: 208px;
 }
 
 .span-text-ag{
@@ -92,22 +111,31 @@ export default {
 
 
 .label-text-ag{
-    color: white;
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
-    font-weight: 600;
+    display: flex;
+    font-weight: 500;
+    justify-content: center;
+    color: black;
+}
+.div-b-ag{
+    display: flex;
+    gap: 10px;
 }
 
 .btn-v{
-    margin-top: 10px;
     background-color: #93BEA9;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
-    margin-right: 10px;
+    width: 100px;
 
+}
+.btn-clean-ag{
+    border: 2px solid   #93BEA9;
+    color:  #93BEA9;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: 100px;
 }
 
 .p-ag{

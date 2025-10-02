@@ -21,7 +21,7 @@
 import axios from 'axios';
 
 export default {
-    name: 'TextToMorse',
+    name: 'FizzBuzz',
     data() {
         return {
             items: []

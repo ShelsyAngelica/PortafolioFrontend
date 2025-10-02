@@ -8,7 +8,7 @@
                 <img src="../assets/images/php.png" alt="" class="img-project">
                 <h5 class="title-project">Texto a Morse</h5>
                 <router-link :to="{ name: 'TextToMorse' }"> Visitar </router-link>
-                <p class="description-project">Descripción del proyecto: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                <p class="description-project">Programa que es capaz de transformar texto natural a códigomorse y viceversa, al igual que reproducir el texto en morse.</p>
                 <!-- <p>Tecnologías</p> -->
             </div>
 
@@ -16,7 +16,10 @@
                 <img src="../assets/images/php.png" alt="" class="img-project">
                 <h5 class="title-project">Visita de Carros</h5>
                 <router-link :to="{ name: 'VisitCar' }"> Visitar </router-link>
-                <p class="description-project">Descripción del proyecto: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                <p class="description-project">
+                    Programa para gestionar entradas y salidas de vehículos. 
+                    Cada vehículo se identifica por placa y cada estancia tiene hora de entrada y hora de salida. Según el tipo de vehículo se aplica una política de tarifas distinta.
+                </p>
             </div>
 
             <div class="card-project">
@@ -24,16 +27,36 @@
                 <h5 class="title-project">Fizz Buzz</h5>
                 <router-link :to="{ name: 'FizzBuzz' }"> Visitar </router-link>
                 <p class="description-project">Descripción</p>
-                <p>Tecnologías</p>
             </div>
             
             <div class="card-project">
                 <img src="../assets/images/php.png" alt="" class="img-project">
                 <h5 class="title-project">Anagrama</h5>
                 <router-link :to="{ name: 'Anagram' }"> Visitar </router-link>
-                <p class="description-project">Descripción</p>
-                <p>Tecnologías</p>
+                <p class="description-project">
+                    Programa que recibe dos palabras y retorne
+                    verdadero o falso según sean o no anagramas.
+                    Un Anagrama consiste en formar una palabra reordenando todas las letras de otra palabra inicial.
+                </p>
             </div> 
+
+            <div class="card-project">
+                <img src="../assets/images/php.png" alt="" class="img-project">
+                <h5 class="title-project">Numeros Primos</h5>
+                <router-link :to="{ name: 'PrimeNumbers' }"> Visitar </router-link>
+                <p class="description-project">Programa que se encarga de comprobar si un número es o no primo e imprime los números primos entre 1 y 100.</p>
+            </div>
+
+            <div class="card-project">
+                <img src="../assets/images/php.png" alt="" class="img-project">
+                <h5 class="title-project">Area de un poligono</h5>
+                <router-link :to="{ name: 'AreaOfPolygon' }"> Visitar </router-link>
+                <p class="description-project">
+                    Programa que calcula y retornar el área de un polígono.
+                    Los polígonos soportados serán Triángulo, Cuadrado y Rectángulo.
+                    Imprime el cálculo del área de un polígono de cada tipo.
+                </p>
+            </div>
         </div>
     </section>
 </template>
@@ -75,12 +98,12 @@
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .card-project{
     background-color: #4a1942;
-    width: 150px;
+    width: 190px;
     display: flex;
     flex-direction: column;
     align-items: center;
