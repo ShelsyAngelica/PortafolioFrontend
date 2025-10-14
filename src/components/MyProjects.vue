@@ -57,6 +57,14 @@
                     Imprime el cálculo del área de un polígono de cada tipo.
                 </p>
             </div>
+            <div class="card-project">
+                <img src="../assets/images/php.png" alt="" class="img-project">
+                <h5 class="title-project">Juego de memoria</h5>
+                <router-link :to="{ name: 'MemoryGame' }"> Visitar </router-link>
+                <p class="description-project">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error id repellendus placeat maiores! Dicta, sit et autem, cum non aperiam unde ipsum, totam sunt neque explicabo odit quos! Error, quod!.
+                </p>
+            </div>
         </div>
     </section>
 </template>

@@ -6,6 +6,7 @@ import fizz_buzz from '../views/FizzBuzz.vue'
 import anagram from '../views/AnagraM.vue'
 import prime_numbers from '../views/PrimeNumbers.vue'
 import area_of_polygon from '../views/AreaOfPolygon.vue'
+import memory_game from '../views/MemoryGame.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     name: 'AreaOfPolygon',
     component: area_of_polygon
   },
+  {
+    path: '/juego-de-memoria',
+    name: 'MemoryGame',
+    component: memory_game
+  }
 ]
 
 const router = createRouter({
