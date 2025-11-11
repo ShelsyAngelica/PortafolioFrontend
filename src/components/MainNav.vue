@@ -5,18 +5,46 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse div-nav-main " id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <router-link class="nav-link a-menu" aria-current="page" :to="{ name: 'Home', hash: '#inicio' }">Inicio</router-link>
         <router-link class="nav-link a-menu" :to="{ name: 'Home', hash: '#sobre-mi' }"> Sobre mi </router-link>
         <router-link class="nav-link a-menu" :to="{ name: 'Home', hash: '#proyectos' }">Mis proyectos</router-link>
         <router-link class="nav-link a-menu" :to="{ name: 'Home', hash: '#skills' }">Skills</router-link>
         <router-link class="nav-link a-menu" :to="{ name: 'Home', hash: '#contacto' }">Contacto</router-link>
+        
+      </div>
+      <div>
+        <button class="nav-link a-menu" @click="logout">Cerrar sesión</button>
       </div>
     </div>
   </div>
 </nav>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+
+// import axios from 'axios';
+export default {
+    name: 'MainNav',
+    data() {
+        return {
+            
+        }
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+        ...mapActions('auth', ['logout'])
+    },
+    
+}
+
+
+</script>
 
 
 <style scoped>
@@ -50,6 +78,13 @@ nav {
 
 .last-name{
   color: #93BEA9 ;
+}
+
+@media (min-width: 992px) {
+  .div-nav-main{
+    flex-direction: flex;
+    justify-content: space-between;
+  }
 }
 
 

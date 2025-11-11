@@ -7,6 +7,7 @@ import anagram from '../views/AnagraM.vue'
 import prime_numbers from '../views/PrimeNumbers.vue'
 import area_of_polygon from '../views/AreaOfPolygon.vue'
 import memory_game from '../views/MemoryGame.vue'
+import login from '../views/MyLogin.vue'
 
 const routes = [
   {
@@ -47,8 +48,17 @@ const routes = [
   {
     path: '/juego-de-memoria',
     name: 'MemoryGame',
-    component: memory_game
+    component: memory_game,
+    meta:{
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/login',
+    name: 'MyLogin',
+    component: login
   }
+
 ]
 
 const router = createRouter({
@@ -62,6 +72,18 @@ const router = createRouter({
       }
     }
     return { top: 0 }
+  }
+})
+
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+
+  if (to.meta.requiresAuth && !token) {
+    // Si la ruta requiere login y no hay token, redirige al login
+    next({ path: '/login' })
+  } else {
+    next() // permite pasar
   }
 })
 
