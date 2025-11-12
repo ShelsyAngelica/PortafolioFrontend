@@ -84,7 +84,7 @@
 
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
   .title-contact-me {
       font-size: 2rem;
   }

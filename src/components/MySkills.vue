@@ -73,21 +73,20 @@ export default {
 .div-skills-text {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Espacio entre iconos, opcional */
+  gap: 10px;
   justify-content: center;
-  max-width: 100%; /* Asegura que no se desborde */
+  max-width: 100%; 
 }
 
 .div-skills-text i {
   font-size: 40px;
-  flex: 0 0 calc(100% / 5 - 45px); /* 5 por fila restando el gap */
+  flex: 0 0 calc(100% / 5 - 45px); 
   text-align: center;
 }
 
-/* Responsive: para pantallas más pequeñas */
-@media (max-width: 425px) {
+@media (max-width: 426px) {
   .div-skills-text i {
-    flex: 0 0 20%; /* Aquí puedes cambiar para que ocupen menos o más */
+    flex: 0 0 20%; 
     font-size: 30px;
   }
 
@@ -96,7 +95,6 @@ export default {
   }
 }
 
-/* 🔻 MEDIA QUERY PARA PANTALLAS PEQUEÑAS */
 @media (max-width: 768px) {
     .div-skills {
         flex-direction: column;

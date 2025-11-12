@@ -46,7 +46,7 @@
     font-size: 1rem;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
   .title-about-me {
       font-size: 2rem;
   }
