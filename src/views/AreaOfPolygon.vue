@@ -13,22 +13,22 @@
                     <option value="Rectangulo">Rectángulo</option>
                 </select>                
             </div>
-            <div >
-                    <label for="" class="label-ap">Ingrese el lado 1 </label>
-                    <input type="text" v-model="dato1" class="info-ap">
+            <div v-if="formConfigured.inputs >= 1" >
+                    <label for="" class="label-ap">{{ formConfigured.labels[0] }} </label>
+                    <input type="text" v-model="data1" class="info-ap">
             </div>
-            <div >
-                <label for="" class="label-ap">Ingrese el lado 2 </label>
-                <input type="text" v-model="dato2" class="info-ap">
+            <div v-if="formConfigured.inputs === 2">
+                <label for="" class="label-ap">{{ formConfigured.labels[1] }} </label>
+                <input type="text" v-model="data2" class="info-ap">
             </div>
 
             <div class="div-ap">
                 <button @click="clean()" class="btn-clean-ap">Limpiar</button>
-                <button @click="areaOfPolygon()" class="btn-ap">Calcular</button>
+                <button @click="areaOfPolygon" class="btn-ap">Calcular</button>
             </div>
 
             <span v-if="data" class="result-ap">
-                El area del {{ polygonSelected }} es: {{ data }}
+                El area del {{ polygonSelected}} es: {{ data }}
             </span>
         </div>
             
@@ -37,44 +37,76 @@
     </section>
 </template>
 
-<script>
+<script setup>
 import axios from 'axios';
-export default {
-    name: 'AreaOfPolygon',
-    data() {
-        return {
-            polygonSelected: '',
-            data: null,    
-            dato1:null,
-            dato2:null
-        }
-    },
-    methods: {
-        areaOfPolygon(){
-            axios.get('http://localhost:8000/api/polygon', {
-                params: {
-                    poligono: this.polygonSelected,
-                    dato1: this.dato1,
-                    dato2: this.dato2
-                }
-            })
-            .then(response => {
-                this.data = response.data.data;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-            
-        },
-        clean(){
-            this.data = null;
-            this.dato1 = null;
-            this.dato2 = null;
-            this.polygonSelected = '';
-        }
+import { ref, computed } from 'vue'
+
+let polygonSelected = ref ('');
+let data = ref (null);   
+let data1 = ref (null);
+let data2 = ref (null);
+
+
+const areaOfPolygon = async () => {
+    
+    try{
+        const response = await axios.post('http://localhost:8000/api/polygon', 
+        {
+            poligono: polygonSelected.value,
+            data1:    data1.value ,
+            data2:    data2.value
+        })
+        data.value = response.data.data
         
     }
+    catch (error){
+        console.error(error);
+    }
+        
+            
+        
+            
 }
+
+const formConfigured = computed (() => {
+    switch (polygonSelected.value) {
+        case 'Triangulo':
+            
+            return{
+                inputs: 2,
+                labels: ['base', 'altura']
+            }
+            
+        case 'Rectangulo':
+        
+        return{
+            inputs: 2,
+            labels: ['Lado', 'Lado']
+        }
+
+        case 'Cuadrado':
+        
+        return{
+            inputs: 1,
+            labels: ['Lado']
+        }
+        default:
+        return{
+            inputs: 0,
+            labels: []
+        }
+    }
+})
+
+
+
+const clean = async () => {
+    data.value            = null;
+    data1.value           = null;
+    data2.value           = null;
+    polygonSelected.value = null;
+}
+
 </script>
 
 <style scoped>
