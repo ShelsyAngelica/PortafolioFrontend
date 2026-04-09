@@ -12,8 +12,8 @@
                 <input type="text" v-model="string2" class="input-text-ag">
                 
                 <div class="div-b-ag">
-                    <button type="button" @click="anagram()" class="btn-v">Validar</button>
                     <button @click="clean()" class="btn-clean-ag">Limpiar</button>
+                    <button type="button" @click="anagram()" class="btn-v">Validar</button>
                 </div>
 
                 <p v-if="data !== null" class="p-ag">
