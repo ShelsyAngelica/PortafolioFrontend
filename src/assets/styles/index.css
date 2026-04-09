@@ -1,5 +1,12 @@
+:root {
+  --primary-color: #be93b7;
+  --secondary-color: rgb(72, 25, 64);
+  --tertiary-color: #ffffff0d;
+  --quaternary-color: #93BEA9;
+  --quinary-color: #fff9;
+}
 body {
-  background-color:  rgb(190, 147, 183);
+  background-color: var(--primary-color);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
