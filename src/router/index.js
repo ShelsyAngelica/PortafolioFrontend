@@ -49,9 +49,6 @@ const routes = [
     path: '/juego-de-memoria',
     name: 'MemoryGame',
     component: memory_game,
-    meta:{
-      requiresAuth: true
-    }
   },
   {
     path: '/login',
