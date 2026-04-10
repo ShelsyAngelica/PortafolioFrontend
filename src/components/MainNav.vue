@@ -1,11 +1,13 @@
 <template>
   <nav class="navbar navbar-expand-lg" id="inicio">
   <div class="container-fluid">
-    <a class="name" href="#">Shelsy <span class="last-name">GARCIA</span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse div-nav-main " id="navbarNavAltMarkup">
+    <div>
+      <a class="name" href="#">Shelsy <span class="last-name">GARCIA</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse div-nav-main justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <router-link class="nav-link a-menu" aria-current="page" :to="{ name: 'Home', hash: '#inicio' }">Inicio</router-link>
         <router-link class="nav-link a-menu" :to="{ name: 'Home', hash: '#sobre-mi' }"> Sobre mi </router-link>
@@ -13,9 +15,6 @@
         <router-link class="nav-link a-menu" :to="{ name: 'Home', hash: '#skills' }">Skills</router-link>
         <router-link class="nav-link a-menu" :to="{ name: 'Home', hash: '#contacto' }">Contacto</router-link>
         
-      </div>
-      <div>
-        <button class="nav-link a-menu" @click="logout">Cerrar sesión</button>
       </div>
     </div>
   </div>
@@ -56,7 +55,12 @@ nav {
   font-weight: 400;
   font-style: normal;
   font-weight: bold;
-  
+  border-bottom: 2px solid var(--quinary-color);
+}
+.container-fluid{
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 .name{
   font-size: 1.2rem;
