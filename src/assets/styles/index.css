@@ -1,9 +1,14 @@
 :root {
   --primary-color: #be93b7;
-  --secondary-color: rgb(72, 25, 64);
+  --secondary-color: hsl(280, 50%, 15%);
+  --secondary-color-light: hsl(280, 40%, 30%);
   --tertiary-color: #ffffff0d;
-  --quaternary-color: #93BEA9;
+  --quaternary-color: #79d2b5;
   --quinary-color: #fff9;
+  --septenary-color: #e2ab2c;
+  --octonary-color: #2a1626;
+  --nonary-color: #358dc7;
+  --decimal-color: #ffffff;
 }
 body {
   background-color: var(--primary-color);
