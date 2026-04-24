@@ -57,7 +57,12 @@
 <style scoped>
 
 .section-contact-me{
-    background-color: var(--secondary-color);
+    background-image: linear-gradient(
+        to bottom right,
+        var(--secondary-color),
+        var(--secondary-color-light),
+        var(--secondary-color)
+    );
     display: flex;
     flex-direction: column;
     align-items: center;
