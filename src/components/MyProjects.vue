@@ -36,6 +36,11 @@ export default {
         return {
             projects : [
                 {
+                    title: 'Juego de memoria',
+                    route: 'MemoryGame',
+                    text: 'Juego de memoria que desafía a recordar posiciones de tarjetas ocultas.'
+                },                
+                {
                     title: 'Texto a Morse',
                     route: 'TextToMorse',
                     text:  'Herramienta que convierte texto a código Morse y reproduce su sonido en tiempo real.'
@@ -46,14 +51,14 @@ export default {
                     text: 'Aplicación para gestionar el ingreso y salida de vehículos, registro de placas, tiempos y cálculo de costo.'
                 },
                 {
-                    title: 'Fizz Buzz',
-                    route: 'FizzBuzz',
-                    text: 'Implementación del clásico FizzBuzz que evalúa números y aplica reglas de divisibilidad.'
-                },
-                {
                     title: 'Anagrama',
                     route: 'Anagram',
                     text: 'Herramienta que verifica si dos palabras son anagramas, comparando sus caracteres.'
+                },
+                {
+                    title: 'Fizz Buzz',
+                    route: 'FizzBuzz',
+                    text: 'Implementación del clásico FizzBuzz que evalúa números y aplica reglas de divisibilidad.'
                 },
                 {
                     title: 'Numeros Primos',
@@ -65,11 +70,6 @@ export default {
                     route: 'AreaOfPolygon',
                     text: 'Calculadora de área para diferentes polígonos.'
                 },
-                {
-                    title: 'Juego de memoria',
-                    route: 'MemoryGame',
-                    text: 'Juego de memoria que desafía a recordar posiciones de tarjetas ocultas.'
-                },                
             ]
         }
     }
