@@ -14,6 +14,9 @@
                         <h3 class="title-project">{{ project.title }}</h3>
                         
                     </div>
+                    <div>
+                        <span class="text-project">{{ project.text }}</span>
+                    </div>
                     <div class="div-project-link">
                         <p class="link-project"> Ver proyecto </p>
                         <div class="div-project-icon-link">
@@ -34,31 +37,38 @@ export default {
             projects : [
                 {
                     title: 'Texto a Morse',
-                    route: 'TextToMorse'
+                    route: 'TextToMorse',
+                    text:  'Herramienta que convierte texto a código Morse y reproduce su sonido en tiempo real.'
                 },
                 {
                     title: 'Visita de Carros',
-                    route: 'VisitCar'
+                    route: 'VisitCar',
+                    text: 'Aplicación para gestionar el ingreso y salida de vehículos, registro de placas, tiempos y cálculo de costo.'
                 },
                 {
                     title: 'Fizz Buzz',
-                    route: 'FizzBuzz'
+                    route: 'FizzBuzz',
+                    text: 'Implementación del clásico FizzBuzz que evalúa números y aplica reglas de divisibilidad.'
                 },
                 {
                     title: 'Anagrama',
-                    route: 'Anagram'
+                    route: 'Anagram',
+                    text: 'Herramienta que verifica si dos palabras son anagramas, comparando sus caracteres.'
                 },
                 {
                     title: 'Numeros Primos',
-                    route: 'PrimeNumbers'
+                    route: 'PrimeNumbers',
+                    text: 'Programa que identifica números primos evaluando sus divisores'
                 },
                 {
                     title: 'Area de un poligono',
-                    route: 'AreaOfPolygon'
+                    route: 'AreaOfPolygon',
+                    text: 'Calculadora de área para diferentes polígonos.'
                 },
                 {
                     title: 'Juego de memoria',
-                    route: 'MemoryGame'
+                    route: 'MemoryGame',
+                    text: 'Juego de memoria que desafía a recordar posiciones de tarjetas ocultas.'
                 },                
             ]
         }
@@ -69,7 +79,7 @@ export default {
 <style scoped>
 
 .section-projects{
-    background-color: rgb(190, 147, 183);
+    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,22 +94,28 @@ export default {
 }
 
 .title-projects{
-    color: white;
+    color: var(--decimal-color);
     font-size: 3rem;
-    font-weight: 600;
+    font-weight: 800;
     margin-bottom: 40px;
+
 }
 
 .title-project{
-    font-weight: 500;
-    color: white;
+    font-weight: 600;
+    color: var(--secondary-color-light);
     font-size: 1.4rem;
     margin-bottom: 0;
+
 }
 
 
 .span-projects{
-    color: rgb(147, 190, 169);
+    color: var(--quaternary-color);
+}
+
+.text-project{
+    color: var(--secondary-color-light);
 }
 
 .projects{
@@ -114,7 +130,7 @@ export default {
     left: 0;
     right: 0;
     height: 3px; 
-    background: linear-gradient(to right, transparent, #77c09c, transparent);
+    background: linear-gradient(to right, transparent, var(--secondary-color-light), transparent);
     opacity: 0;
     transition: opacity .5s ease; 
 }
@@ -125,36 +141,38 @@ export default {
 
 .card-project{
     position: relative;
-    background-color: #4a1942;
-    width: 340px;
+    background-color: var(--primary-color-light);
+    backdrop-filter: blur(10px);
+    width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 25px;
+    padding: 20px;
     border-radius: 20px;
-    height: 170px;
+    height: 280px;
+    justify-content: space-between;
 }
 
 .card-project:hover .link-project{
-    color: rgb(119, 192, 156);
-    
+    color: var(--secondary-color-light);
     transition: all 0.3s ease-in-out;
 }
 
 .card-project:hover .div-project-icon-link{
-    background-color: #77c09c;
+    background-color: var(--secondary-color-light);
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
 
 .card-project:hover .div-project-icon-link svg{
-    stroke: #4a1942;
+    stroke: var(--quinary-color);
 }
 
 .div-project-content{
     display: flex;
     align-items: center;
-    gap:16px
+    gap:16px;
+    margin-bottom: 11px;
 }
 
 .div-project-link{
@@ -163,26 +181,29 @@ export default {
     justify-content: space-between;
     margin-top: 15px;
     border-top: 1px solid #e0e0e030;
-    padding-top: 11px;
 }
 
 .div-project-icon{
-    background-color: #93bea93d;
+    background-color: var(--quaternary-color-light);
     border-radius: 10px;
     padding: 10px;
 }
 
 .link-project{
     text-decoration: none;
-    color: white;
+    color: var(--decimal-color);
     font-size: 0.9rem;
-    font-weight: 200;
+    font-weight: 400;
     margin: 0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--quinary-color);
 
 }
 
 .div-project-icon-link{
-    background-color: rgba(147, 190, 169, 0.239);
+    background-color: var(--quinary-color);
     border-radius: 50%;
     padding: 5px;
 }
