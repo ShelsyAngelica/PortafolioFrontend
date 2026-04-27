@@ -1,14 +1,18 @@
 :root {
-  --primary-color: #be93b7;
+  --primary-color: hsl(331, 30%, 85%);
+  --primary-color-light: hsl(331, 30%, 90%);
   --secondary-color: hsl(280, 50%, 15%);
   --secondary-color-light: hsl(280, 40%, 30%);
   --tertiary-color: #ffffff0d;
   --quaternary-color: #79d2b5;
+  --quaternary-color-light: #79d2b53d;
   --quinary-color: #fff9;
   --septenary-color: #e2ab2c;
   --octonary-color: #2a1626;
   --nonary-color: #358dc7;
   --decimal-color: #ffffff;
+  --quinary-color-light: #dbd9d90e;
+  --senary-color:hsl(330deg 20% 92%) ;
 }
 body {
   background-color: var(--primary-color);
